@@ -1,0 +1,1505 @@
+ Control flow
+
+Input and Output
+ In Python, you can interact with a program using input and display information to the user using output.
+
+1. **Input (Reading User Input):**
+
+You can use the `input()` function to read input from the user through the keyboard. The `input()` function reads a line of text as a string from the user and returns that string. Here's a basic example:
+
+```python
+user_input = input("Enter something: ")
+print("You entered:", user_input)
+```
+
+When you run this code, it will prompt the user to enter something, and then it will display what the user entered.
+
+2. **Output (Displaying Information):**
+
+You can use the `print()` function to display information to the user. The `print()` function takes one or more expressions as arguments and displays them as text. Here's a simple example:
+
+```python
+print("Hello, World!")
+```
+
+This code will display "Hello, World!" in the console.
+
+You can also format the output using f-strings or the `.format()` method:
+
+```python
+name = "Alice"
+age = 30
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output:
+```
+My name is Alice and I am 30 years old.
+```
+
+3. **Output to Files:**
+
+You can also write output to a file instead of the console. To do this, you can use the `open()` function to open a file and the `write()` method to write data to it. Here's an example:
+
+```python
+with open("output.txt", "w") as file:
+file.write("This is written to a file.")
+```
+
+This code will create a file named "output.txt" and write the specified text to it.
+
+4. **Formatted Output:**
+
+You can format output using different formatting options, such as f-strings, %-formatting, or the `.format()` method. For example, with f-strings:
+
+```python
+name = "John"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output:
+```
+My name is John and I am 25 years old.
+
+Regular expressions are a compact way of representing a collection of strings. The power of regular expression is shown in that a single regular expression can represent an unlimited number of strings, but only if the expression’s requirements are met. Regular expressions (also known as ‘regexes’) are defined by using a language other than Python (a mini-language). The way Python communicates and creates expressions is done with the re module.
+
+
+
+Regexes are used for five main reasons:
+
+
+
+· Parsing: Identifying and extracting pieces of text that match certain criteria.
+
+· Searching: Locating substrings that can have more than one form like: ‘pet.png’, ‘pet.gif’, ‘pet.mpg’ while avoiding ‘carpet.gif’.
+
+· Searching and replacing: Find substrings and replace specified words within the matched string or strings, e.g. replacing 071 234 5678 with +2771 234 5678.
+
+· Splitting strings: Splitting a string where a certain character occurs, for example, split comma delimits strings every time a ‘,’ is found.
+
+· Validation: Checking whether a string meets criteria, for example, to check whether an email address is in the standard format.
+
+
+
+Regexes are used to create parsers, but they do have limitations:
+
+
+
+· They are only able to deal with recursive (repeating) structured text if the maximum number of recursions is known.
+
+· Large complex regexes are difficult to maintain.
+
+
+
+This is why, when parsing, a tool designed for this purpose is used. For example, use an XML parser for XML. At its simplest an expression is just a character, which can be followed by a quantifier. More complex expressions can include any number of quantified expressions.
+
+
+Reading and Writing Files
+ Argument
+
+The argument is the object used in an application of a function; it may be referenced by other variables or objects.
+
+
+
+· Parameter
+
+The parameter is a variable name that is part of the function and is a local variable within the function body.
+
+Ordinary functions are functions that follow mathematical procedures. They will receive an argument, perform a specific calculation with the argument, and return a result.
+
+Procedure functions normally do not return a result; they are called to execute a procedure. For example a function can be created to set up a connection to a database.
+
+Factory functions do not take parameters. The function generates values. Some factory functions work by accessing an object encapsulated in a module. For example, you will access the random number generator encapsulated in the random module.
+
+Regular expressions, often referred to as regex or regexp, are powerful tools for pattern matching and text manipulation in Python. Python provides the `re` module for working with regular expressions. Here's a basic overview of how to use regular expressions in Python:
+
+1. Import the `re` module:
+
+To use regular expressions in Python, you need to import the `re` module:
+
+```python
+import re
+```
+
+2. Creating a Regular Expression Pattern:
+
+You define a regular expression pattern to match specific patterns in strings. For example, to match a simple word like "apple," you can create a pattern like this:
+
+```python
+pattern = r"apple"
+```
+
+The `r` before the string denotes a raw string, which is often used with regular expressions to avoid unintended escapes.
+
+3. Using Regular Expression Functions:
+
+Python's `re` module provides several functions for working with regular expressions. Here are some of the most commonly used ones:
+
+- `re.search()`: Searches for a pattern in a string and returns the first match found.
+- `re.match()`: Matches the pattern only at the beginning of the string.
+- `re.findall()`: Returns all non-overlapping matches as a list of strings.
+- `re.finditer()`: Returns an iterator yielding match objects for all non-overlapping matches.
+- `re.sub()`: Replaces occurrences of the pattern with a specified string.
+- `re.split()`: Splits the string by occurrences of the pattern.
+
+Here's an example of using `re.search()`:
+
+```python
+text = "I have an apple and a banana."
+pattern = r"apple"
+match = re.search(pattern, text)
+if match:
+print("Match found:", match.group())
+else:
+print("No match found.")
+```
+
+4. Regular Expression Flags:
+
+You can also use flags with regular expression functions to modify their behavior. For example, you can use `re.IGNORECASE` to perform a case-insensitive match. For instance:
+
+```python
+text = "I have an Apple and a banana."
+pattern = r"apple"
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+print("Match found:", match.group())
+else:
+print("No match found.")
+```
+
+5. Regular Expression Patterns:
+
+Regular expression patterns can be much more complex than simple string matches. You can use metacharacters and special sequences to create powerful and flexible patterns. Some common metacharacters include `.` (match any character), `*` (match zero or more of the preceding character), `+` (match one or more of the preceding character), `?` (match zero or one of the preceding character), and more.
+
+Here's a simple example of using regular expressions to extract email addresses from a text:
+
+```python
+import re
+
+text = "My email addresses are john@example.com and jane@email.co.uk. Please contact us."
+pattern = r'\S+@\S+'
+matches = re.findall(pattern, text)
+
+for match in matches:
+print(match)
+```
+
+This code will extract and print all the email addresses from the given text. Regular expressions can be as simple or as complex as your specific needs require.
+Write Methods
+ Python methods are typically defined within classes and operate on object instances.
+In Python, characters and character classes are essential concepts when working with strings and regular expressions. Characters represent individual symbols or letters, while character classes are used to specify groups of characters that match specific patterns in strings. Let's explore these concepts in more detail:
+
+1. Characters:
+Characters in Python are individual symbols or letters, such as 'a', 'b', '1', '$', and so on. You can work with characters in various ways, including indexing a string to access individual characters.
+
+Example:
+
+```python
+my_string = "Hello, World!"
+first_char = my_string[0] # Access the first character 'H'
+```
+
+2. Character Classes:
+Character classes are patterns that define groups of characters. They are often used in regular expressions to match specific character patterns in strings. Python's `re` module allows you to work with character classes to perform pattern matching and text manipulation.
+
+Common character classes include:
+
+- `\d`: Matches any digit (equivalent to `[0-9]`).
+- `\D`: Matches any non-digit character (equivalent to `[^0-9]`).
+- `\w`: Matches any word character (letters, digits, or underscores, equivalent to `[a-zA-Z0-9_]`).
+- `\W`: Matches any non-word character (equivalent to `[^a-zA-Z0-9_]`).
+- `\s`: Matches any whitespace character (spaces, tabs, newline, etc.).
+- `\S`: Matches any non-whitespace character.
+- `[...]`: A custom character class, you can define your own set of characters to match. For example, `[aeiou]` matches any vowel.
+
+Example of using character classes in Python's `re` module:
+
+```python
+import re
+
+text = "The price of the item is $99.99"
+pattern = r'\$\d+\.\d+' # Matches currency values like $99.99
+match = re.search(pattern, text)
+if match:
+print("Match found:", match.group()) # Output: Match found: $99.99
+```
+
+Character classes are very powerful when you need to extract or validate patterns in strings. You can use them to create complex regular expressions to match specific text patterns within larger strings or documents.
+Regex
+ In Python's `re` module, regular expressions can be modified using flags, which are optional arguments that change the behavior of the regular expression pattern matching. Flags are represented as constants and can be combined using the bitwise OR operator (`|`). These flags help you control various aspects of pattern matching, such as case-insensitivity, multiline matching, and more. Here are some common flags:
+
+1. `re.IGNORECASE` (or `re.I`):
+- This flag makes the regular expression pattern case-insensitive, allowing it to match both uppercase and lowercase characters.
+
+Example:
+```python
+import re
+
+text = "Hello, world!"
+pattern = r'hello'
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+print("Match found:", match.group()) # Output: Match found: Hello
+```
+
+2. `re.MULTILINE` (or `re.M`):
+- This flag enables multiline mode, which allows the `^` and `$` anchors to match the beginning and end of each line within a multiline string. By default, `^` and `$` match the start and end of the entire string.
+
+Example:
+```python
+import re
+
+text = "Line 1\nLine 2\nLine 3"
+pattern = r'^Line \d'
+matches = re.findall(pattern, text, re.MULTILINE)
+print(matches) # Output: ['Line 1', 'Line 2']
+```
+
+3. `re.DOTALL` (or `re.S`):
+- This flag makes the dot (`.`) in your regular expression match any character, including newline characters (`\n`). By default, the dot doesn't match newline characters.
+
+Example:
+```python
+import re
+
+text = "Line 1\nLine 2\nLine 3"
+pattern = r'.*2.*'
+match = re.search(pattern, text, re.DOTALL)
+if match:
+print("Match found:", match.group()) # Output: Match found: Line 2
+```
+
+4. `re.VERBOSE` (or `re.X`):
+- This flag allows you to write more readable and well-documented regular expressions by ignoring whitespace and adding comments within the pattern. It helps with complex regex patterns.
+
+Example:
+```python
+import re
+
+text = "Hello, world!"
+pattern = r'''
+hello, # Match "hello,"
+\s+ # Match one or more whitespace characters
+world # Match "world"
+'''
+match = re.search(pattern, text, re.VERBOSE)
+if match:
+print("Match found:", match.group()) # Output: Match found: Hello, world
+```
+
+5. `re.ASCII`:
+- This flag forces ASCII-only matching, treating non-ASCII characters as literals. It can be useful when you want to work with only ASCII characters.
+
+Flags are typically used as the third argument to `re` module functions like `re.search()`, `re.match()`, and `re.findall()`. You can combine multiple flags using the `|` operator to achieve the desired behavior in your regular expressions.
+Reading and Writing to Files
+1.	**Opening a File**: To open a file for reading, use the `open()` function with the file name and the mode `'r'` (for reading).
+
+```python
+# Open a file for reading
+file_path = 'sample.txt'
+with open(file_path, 'r') as file:
+# File operations go here
+
+
+2. **Reading Data**: You can read the file's contents using methods like `read()`, `readline()`, or by iterating through the file object.
+
+- Using `read()` to read the entire file content:
+
+```python
+with open(file_path, 'r') as file:
+content = file.read()
+print(content)
+```
+
+- Using `readline()` to read lines one by one:
+
+```python
+with open(file_path, 'r') as file:
+line = file.readline()
+while line:
+print(line, end='')
+line = file.readline()
+```
+
+- Iterating through the file object:
+
+```python
+with open(file_path, 'r') as file:
+for line in file:
+print(line, end='')
+```
+
+### Writing to a File
+
+You can write data to a file using file objects in Python. Here's how you can do it:
+
+1. **Opening a File for Writing**: To open a file for writing, use the `open()` function with the file name and the mode `'w'` (for writing). Be cautious, as this will overwrite the file if it already exists.
+
+```python
+# Open a file for writing (creates the file if it doesn't exist)
+file_path = 'output.txt'
+with open(file_path, 'w') as file:
+# File operations go here
+```
+
+2. **Writing Data**: You can write data to the file using the `write()` method.
+
+```python
+with open(file_path, 'w') as file:
+file.write("Hello, World!\n")
+file.write("This is a sample file.\n")
+```
+
+3. **Appending Data**: To add content to an existing file without overwriting it, use the mode `'a'` for append.
+
+```python
+# Open a file for appending (creates the file if it doesn't exist)
+file_path = 'output.txt'
+with open(file_path, 'a') as file:
+file.write("This is appended content.\n")
+```
+
+### Closing the File
+
+In Python, it's good practice to use the `with` statement when working with file objects. This ensures that the file is properly closed when you're done with it. The file will be automatically closed when you exit the `with` block.
+
+Remember to handle exceptions when working with files, such as `FileNotFoundError` or `PermissionError`. Always make sure you have the necessary permissions to read from or write to the file.
+
+That's a basic introduction to working with file objects in Python. You can expand on these concepts to handle more complex file operations and work with different file formats.
+
+ In Python, you can interact with a program using input and display information to the user using output.
+
+1. **Input (Reading User Input):**
+
+You can use the `input()` function to read input from the user through the keyboard. The `input()` function reads a line of text as a string from the user and returns that string. Here's a basic example:
+
+```python
+user_input = input("Enter something: ")
+print("You entered:", user_input)
+```
+
+When you run this code, it will prompt the user to enter something, and then it will display what the user entered.
+
+2. **Output (Displaying Information):**
+
+You can use the `print()` function to display information to the user. The `print()` function takes one or more expressions as arguments and displays them as text. Here's a simple example:
+
+```python
+print("Hello, World!")
+```
+
+This code will display "Hello, World!" in the console.
+
+You can also format the output using f-strings or the `.format()` method:
+
+```python
+name = "Alice"
+age = 30
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output:
+```
+My name is Alice and I am 30 years old.
+```
+
+3. **Output to Files:**
+
+You can also write output to a file instead of the console. To do this, you can use the `open()` function to open a file and the `write()` method to write data to it. Here's an example:
+
+```python
+with open("output.txt", "w") as file:
+file.write("This is written to a file.")
+```
+
+This code will create a file named "output.txt" and write the specified text to it.
+
+4. **Formatted Output:**
+
+You can format output using different formatting options, such as f-strings, %-formatting, or the `.format()` method. For example, with f-strings:
+
+```python
+name = "John"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output:
+```
+My name is John and I am 25 years old.
+
+Regular expressions are a compact way of representing a collection of strings. The power of regular expression is shown in that a single regular expression can represent an unlimited number of strings, but only if the expression’s requirements are met. Regular expressions (also known as ‘regexes’) are defined by using a language other than Python (a mini-language). The way Python communicates and creates expressions is done with the re module.
+
+
+
+Regexes are used for five main reasons:
+
+
+
+· Parsing: Identifying and extracting pieces of text that match certain criteria.
+
+· Searching: Locating substrings that can have more than one form like: ‘pet.png’, ‘pet.gif’, ‘pet.mpg’ while avoiding ‘carpet.gif’.
+
+· Searching and replacing: Find substrings and replace specified words within the matched string or strings, e.g. replacing 071 234 5678 with +2771 234 5678.
+
+· Splitting strings: Splitting a string where a certain character occurs, for example, split comma delimits strings every time a ‘,’ is found.
+
+· Validation: Checking whether a string meets criteria, for example, to check whether an email address is in the standard format.
+
+
+
+Regexes are used to create parsers, but they do have limitations:
+
+
+
+· They are only able to deal with recursive (repeating) structured text if the maximum number of recursions is known.
+
+· Large complex regexes are difficult to maintain.
+
+
+
+This is why, when parsing, a tool designed for this purpose is used. For example, use an XML parser for XML. At its simplest an expression is just a character, which can be followed by a quantifier. More complex expressions can include any number of quantified expressions.
+
+
+DAY 2
+Reading and Writing Files
+ Argument
+
+The argument is the object used in an application of a function; it may be referenced by other variables or objects.
+
+
+
+· Parameter
+
+The parameter is a variable name that is part of the function and is a local variable within the function body.
+
+Ordinary functions are functions that follow mathematical procedures. They will receive an argument, perform a specific calculation with the argument, and return a result.
+
+Procedure functions normally do not return a result; they are called to execute a procedure. For example a function can be created to set up a connection to a database.
+
+Factory functions do not take parameters. The function generates values. Some factory functions work by accessing an object encapsulated in a module. For example, you will access the random number generator encapsulated in the random module.
+
+Regular expressions, often referred to as regex or regexp, are powerful tools for pattern matching and text manipulation in Python. Python provides the `re` module for working with regular expressions. Here's a basic overview of how to use regular expressions in Python:
+
+1. Import the `re` module:
+
+To use regular expressions in Python, you need to import the `re` module:
+
+```python
+import re
+```
+
+2. Creating a Regular Expression Pattern:
+
+You define a regular expression pattern to match specific patterns in strings. For example, to match a simple word like "apple," you can create a pattern like this:
+
+```python
+pattern = r"apple"
+```
+
+The `r` before the string denotes a raw string, which is often used with regular expressions to avoid unintended escapes.
+
+3. Using Regular Expression Functions:
+
+Python's `re` module provides several functions for working with regular expressions. Here are some of the most commonly used ones:
+
+- `re.search()`: Searches for a pattern in a string and returns the first match found.
+- `re.match()`: Matches the pattern only at the beginning of the string.
+- `re.findall()`: Returns all non-overlapping matches as a list of strings.
+- `re.finditer()`: Returns an iterator yielding match objects for all non-overlapping matches.
+- `re.sub()`: Replaces occurrences of the pattern with a specified string.
+- `re.split()`: Splits the string by occurrences of the pattern.
+
+Here's an example of using `re.search()`:
+
+```python
+text = "I have an apple and a banana."
+pattern = r"apple"
+match = re.search(pattern, text)
+if match:
+print("Match found:", match.group())
+else:
+print("No match found.")
+```
+
+4. Regular Expression Flags:
+
+You can also use flags with regular expression functions to modify their behavior. For example, you can use `re.IGNORECASE` to perform a case-insensitive match. For instance:
+
+```python
+text = "I have an Apple and a banana."
+pattern = r"apple"
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+print("Match found:", match.group())
+else:
+print("No match found.")
+```
+
+5. Regular Expression Patterns:
+
+Regular expression patterns can be much more complex than simple string matches. You can use metacharacters and special sequences to create powerful and flexible patterns. Some common metacharacters include `.` (match any character), `*` (match zero or more of the preceding character), `+` (match one or more of the preceding character), `?` (match zero or one of the preceding character), and more.
+
+Here's a simple example of using regular expressions to extract email addresses from a text:
+
+```python
+import re
+
+text = "My email addresses are john@example.com and jane@email.co.uk. Please contact us."
+pattern = r'\S+@\S+'
+matches = re.findall(pattern, text)
+
+for match in matches:
+print(match)
+```
+
+This code will extract and print all the email addresses from the given text. Regular expressions can be as simple or as complex as your specific needs require.
+
+Write Methods
+ Python methods are typically defined within classes and operate on object instances.
+In Python, characters and character classes are essential concepts when working with strings and regular expressions. Characters represent individual symbols or letters, while character classes are used to specify groups of characters that match specific patterns in strings. Let's explore these concepts in more detail:
+
+1. Characters:
+Characters in Python are individual symbols or letters, such as 'a', 'b', '1', '$', and so on. You can work with characters in various ways, including indexing a string to access individual characters.
+
+Example:
+
+```python
+my_string = "Hello, World!"
+first_char = my_string[0] # Access the first character 'H'
+```
+
+2. Character Classes:
+Character classes are patterns that define groups of characters. They are often used in regular expressions to match specific character patterns in strings. Python's `re` module allows you to work with character classes to perform pattern matching and text manipulation.
+
+Common character classes include:
+
+- `\d`: Matches any digit (equivalent to `[0-9]`).
+- `\D`: Matches any non-digit character (equivalent to `[^0-9]`).
+- `\w`: Matches any word character (letters, digits, or underscores, equivalent to `[a-zA-Z0-9_]`).
+- `\W`: Matches any non-word character (equivalent to `[^a-zA-Z0-9_]`).
+- `\s`: Matches any whitespace character (spaces, tabs, newline, etc.).
+- `\S`: Matches any non-whitespace character.
+- `[...]`: A custom character class, you can define your own set of characters to match. For example, `[aeiou]` matches any vowel.
+
+Example of using character classes in Python's `re` module:
+
+```python
+import re
+
+text = "The price of the item is $99.99"
+pattern = r'\$\d+\.\d+' # Matches currency values like $99.99
+match = re.search(pattern, text)
+if match:
+print("Match found:", match.group()) # Output: Match found: $99.99
+```
+
+Character classes are very powerful when you need to extract or validate patterns in strings. You can use them to create complex regular expressions to match specific text patterns within larger strings or documents.
+ In Python's `re` module, regular expressions can be modified using flags, which are optional arguments that change the behavior of the regular expression pattern matching. Flags are represented as constants and can be combined using the bitwise OR operator (`|`). These flags help you control various aspects of pattern matching, such as case-insensitivity, multiline matching, and more. Here are some common flags:
+
+1. `re.IGNORECASE` (or `re.I`):
+- This flag makes the regular expression pattern case-insensitive, allowing it to match both uppercase and lowercase characters.
+
+Example:
+```python
+import re
+
+text = "Hello, world!"
+pattern = r'hello'
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+print("Match found:", match.group()) # Output: Match found: Hello
+```
+
+2. `re.MULTILINE` (or `re.M`):
+- This flag enables multiline mode, which allows the `^` and `$` anchors to match the beginning and end of each line within a multiline string. By default, `^` and `$` match the start and end of the entire string.
+
+Example:
+```python
+import re
+
+text = "Line 1\nLine 2\nLine 3"
+pattern = r'^Line \d'
+matches = re.findall(pattern, text, re.MULTILINE)
+print(matches) # Output: ['Line 1', 'Line 2']
+```
+
+3. `re.DOTALL` (or `re.S`):
+- This flag makes the dot (`.`) in your regular expression match any character, including newline characters (`\n`). By default, the dot doesn't match newline characters.
+
+Example:
+```python
+import re
+
+text = "Line 1\nLine 2\nLine 3"
+pattern = r'.*2.*'
+match = re.search(pattern, text, re.DOTALL)
+if match:
+print("Match found:", match.group()) # Output: Match found: Line 2
+```
+
+4. `re.VERBOSE` (or `re.X`):
+- This flag allows you to write more readable and well-documented regular expressions by ignoring whitespace and adding comments within the pattern. It helps with complex regex patterns.
+
+Example:
+```python
+import re
+
+text = "Hello, world!"
+pattern = r'''
+hello, # Match "hello,"
+\s+ # Match one or more whitespace characters
+world # Match "world"
+'''
+match = re.search(pattern, text, re.VERBOSE)
+if match:
+print("Match found:", match.group()) # Output: Match found: Hello, world
+```
+
+5. `re.ASCII`:
+- This flag forces ASCII-only matching, treating non-ASCII characters as literals. It can be useful when you want to work with only ASCII characters.
+
+Flags are typically used as the third argument to `re` module functions like `re.search()`, `re.match()`, and `re.findall()`. You can combine multiple flags using the `|` operator to achieve the desired behavior in your regular expressions.
+Reading and Writing to Files
+ 1. **Opening a File**: To open a file for reading, use the `open()` function with the file name and the mode `'r'` (for reading).
+
+```python
+# Open a file for reading
+file_path = 'sample.txt'
+with open(file_path, 'r') as file:
+# File operations go here
+
+
+2. **Reading Data**: You can read the file's contents using methods like `read()`, `readline()`, or by iterating through the file object.
+
+- Using `read()` to read the entire file content:
+
+```python
+with open(file_path, 'r') as file:
+content = file.read()
+print(content)
+```
+
+- Using `readline()` to read lines one by one:
+
+```python
+with open(file_path, 'r') as file:
+line = file.readline()
+while line:
+print(line, end='')
+line = file.readline()
+```
+
+- Iterating through the file object:
+
+```python
+with open(file_path, 'r') as file:
+for line in file:
+print(line, end='')
+```
+
+### Writing to a File
+
+You can write data to a file using file objects in Python. Here's how you can do it:
+
+1. **Opening a File for Writing**: To open a file for writing, use the `open()` function with the file name and the mode `'w'` (for writing). Be cautious, as this will overwrite the file if it already exists.
+
+```python
+# Open a file for writing (creates the file if it doesn't exist)
+file_path = 'output.txt'
+with open(file_path, 'w') as file:
+# File operations go here
+```
+
+2. **Writing Data**: You can write data to the file using the `write()` method.
+
+```python
+with open(file_path, 'w') as file:
+file.write("Hello, World!\n")
+file.write("This is a sample file.\n")
+```
+
+3. **Appending Data**: To add content to an existing file without overwriting it, use the mode `'a'` for append.
+
+```python
+# Open a file for appending (creates the file if it doesn't exist)
+file_path = 'output.txt'
+with open(file_path, 'a') as file:
+file.write("This is appended content.\n")
+```
+
+### Closing the File
+
+In Python, it's good practice to use the `with` statement when working with file objects. This ensures that the file is properly closed when you're done with it. The file will be automatically closed when you exit the `with` block.
+
+Remember to handle exceptions when working with files, such as `FileNotFoundError` or `PermissionError`. Always make sure you have the necessary permissions to read from or write to the file.
+
+That's a basic introduction to working with file objects in Python. You can expand on these concepts to handle more complex file operations and work with different file formats.
+
+DAY 3
+ Data Types
+ In Python, data types represent the type or category of values that a variable can hold. Understanding data types is crucial because they determine how data is stored in memory and what operations can be performed on that data. Python supports a variety of built-in data types. Here are some of the most common data types in Python:
+
+1. **int**: Represents integers, which are whole numbers with no fractional or decimal part.
+
+Example:
+```python
+x = 42
+```
+
+2. **float**: Represents floating-point numbers, which are real numbers with a decimal point or in exponential notation.
+
+Example:
+```python
+y = 3.14
+```
+
+3. **str**: Represents strings, which are sequences of characters enclosed in single or double quotes.
+
+Example:
+```python
+name = "Alice"
+```
+
+4. **bool**: Represents boolean values, which can be either `True` or `False`.
+
+Example:
+```python
+is_sunny = True
+```
+
+5. **list**: Represents ordered, mutable sequences. Lists can contain elements of different data types.
+
+Example:
+```python
+numbers = [1, 2, 3, 4, 5]
+```
+
+6. **tuple**: Represents ordered, immutable sequences. Like lists, tuples can contain elements of different data types.
+
+Example:
+```python
+coordinates = (2.5, 4.0)
+```
+
+7. **set**: Represents an unordered collection of unique elements.
+
+Example:
+```python
+unique_numbers = {1, 2, 3, 4, 5}
+```
+
+8. **dict**: Represents dictionaries, which are collections of key-value pairs.
+
+Example:
+```python
+student = {"name": "Bob", "age": 20}
+```
+
+9. **NoneType (None)**: Represents a special data type for indicating the absence of a value. It is often used as a placeholder.
+
+Example:
+```python
+result = None
+```
+
+10. **complex**: Represents complex numbers with real and imaginary parts.
+
+Example:
+```python
+z = 2 + 3j
+```
+
+These are the fundamental built-in data types in Python. Additionally, Python allows you to create your own custom data types using classes.
+
+It's important to note that Python is dynamically typed, which means that the data type of a variable is determined at runtime. You don't need to explicitly specify the data type of a variable when declaring it; Python infers it based on the assigned value. This flexibility makes Python a versatile and easy-to-use language for a wide range of programming tasks.
+Data Types
+ In Python, data types represent the type or category of values that a variable can hold. Understanding data types is crucial because they determine how data is stored in memory and what operations can be performed on that data. Python supports a variety of built-in data types. Here are some of the most common data types in Python:
+
+1. **int**: Represents integers, which are whole numbers with no fractional or decimal part.
+
+Example:
+```python
+x = 42
+```
+
+2. **float**: Represents floating-point numbers, which are real numbers with a decimal point or in exponential notation.
+
+Example:
+```python
+y = 3.14
+```
+
+3. **str**: Represents strings, which are sequences of characters enclosed in single or double quotes.
+
+Example:
+```python
+name = "Alice"
+```
+
+4. **bool**: Represents boolean values, which can be either `True` or `False`.
+
+Example:
+```python
+is_sunny = True
+```
+
+5. **list**: Represents ordered, mutable sequences. Lists can contain elements of different data types.
+
+Example:
+```python
+numbers = [1, 2, 3, 4, 5]
+```
+
+6. **tuple**: Represents ordered, immutable sequences. Like lists, tuples can contain elements of different data types.
+
+Example:
+```python
+coordinates = (2.5, 4.0)
+```
+
+7. **set**: Represents an unordered collection of unique elements.
+
+Example:
+```python
+unique_numbers = {1, 2, 3, 4, 5}
+```
+
+8. **dict**: Represents dictionaries, which are collections of key-value pairs.
+
+Example:
+```python
+student = {"name": "Bob", "age": 20}
+```
+
+9. **NoneType (None)**: Represents a special data type for indicating the absence of a value. It is often used as a placeholder.
+
+Example:
+```python
+result = None
+```
+
+10. **complex**: Represents complex numbers with real and imaginary parts.
+
+Example:
+```python
+z = 2 + 3j
+```
+
+These are the fundamental built-in data types in Python. Additionally, Python allows you to create your own custom data types using classes.
+
+It's important to note that Python is dynamically typed, which means that the data type of a variable is determined at runtime. You don't need to explicitly specify the data type of a variable when declaring it; Python infers it based on the assigned value. This flexibility makes Python a versatile and easy-to-use language for a wide range of programming tasks.
+Integers
+ In Python, integers (`int`) are a built-in data type used to represent whole numbers without any fractional or decimal part. Integers can be positive or negative and have no maximum or minimum limit in terms of their value. Here are some examples of integers in Python:
+
+```python
+x = 42
+y = -17
+z = 0
+``
+
+In these examples, `x` is a positive integer, `y` is a negative integer, and `z` is the integer zero.
+
+You can perform various mathematical operations on integers, such as addition, subtraction, multiplication, and division. For example:
+
+```python
+a = 10
+b = 5
+
+sum_result = a + b # Addition
+difference_result = a - b # Subtraction
+product_result = a * b # Multiplication
+division_result = a / b # Division (result is a float)
+integer_division_result = a // b # Integer Division (result is an int)
+modulo_result = a % b # Modulo (remainder)
+power_result = a ** b # Exponentiation
+```
+
+In the code above, `sum_result` will be `15`, `difference_result` will be `5`, `product_result` will be `50`, `division_result` will be `2.0` (float division), `integer_division_result` will be `2` (integer division), `modulo_result` will be `0` (remainder), and `power_result` will be `100000`.
+
+Integers are commonly used for counting, indexing, and performing arithmetic operations in Python. They are one of the fundamental data types and are widely used in many programming tasks.
+Floating point numbers
+ In Python, floating-point numbers, often referred to as "floats," are a built-in data type used to represent real numbers with a fractional or decimal part. Floats are used to store both rational and irrational numbers. Here are some examples of floating-point numbers in Python:
+
+```python
+x = 3.14159
+y = -0.5
+z = 2.0
+```
+
+In these examples, `x` is a positive float, `y` is a negative float, and `z` is a float representing a whole number.
+
+You can perform various mathematical operations on floating-point numbers, just like with integers. For example:
+
+```python
+a = 3.0
+b = 1.5
+
+sum_result = a + b # Addition
+difference_result = a - b # Subtraction
+product_result = a * b # Multiplication
+division_result = a / b # Division
+power_result = a ** b # Exponentiation
+```
+
+In the code above, `sum_result` will be `4.5`, `difference_result` will be `1.5`, `product_result` will be `4.5`, `division_result` will be `2.0`, and `power_result` will be `5.196152422706632` (the result of 3.0 raised to the power of 1.5).
+
+Floating-point numbers can represent a wide range of values, including values with very small or very large magnitudes. However, it's important to be aware that floating-point numbers have limited precision, which can lead to rounding errors in certain calculations. This is a common issue in numerical computing, and it's important to be cautious when comparing floating-point numbers for equality.
+
+Python provides a built-in module called `math` that offers various mathematical functions for working with floats, and another module called `decimal` for higher precision decimal arithmetic when needed.
+
+In summary, floating-point numbers are used in Python to handle real numbers with decimal components and are an essential part of numerical and scientific computing.
+Unpacking Argument Lists
+ In Python, a string is a built-in data type used to represent a sequence of characters. Strings are enclosed in single (''), double (" "), or triple (''' ''' or """ """) quotes. Here are some examples of strings in Python:
+
+```python
+single_quoted_string = 'Hello, World!'
+double_quoted_string = "Python Programming"
+triple_quoted_string = '''This is a
+multi-line string.'''
+```
+
+Strings are versatile and can contain letters, numbers, symbols, and even white spaces. They are used for various purposes, such as representing text, working with textual data, and manipulating strings in different ways.
+
+Here are some common operations and examples involving strings in Python:
+
+1. **Concatenation**: You can concatenate strings using the `+` operator:
+
+```python
+first_name = "John"
+last_name = "Doe"
+full_name = first_name + " " + last_name
+```
+
+2. **Length**: You can find the length of a string using the `len()` function:
+
+```python
+text = "Hello, World!"
+length = len(text) # length will be 13
+```
+
+3. **Indexing and Slicing**: You can access individual characters or substrings of a string using indexing and slicing:
+
+```python
+text = "Python"
+first_letter = text[0] # Access the first character (P)
+substring = text[1:4] # Slicing (yth)
+```
+
+4. **String Methods**: Python provides numerous built-in string methods for performing operations like changing case, splitting, joining, replacing, and more:
+
+```python
+text = "Python Programming"
+lowercase = text.lower() # Convert to lowercase
+uppercase = text.upper() # Convert to uppercase
+words = text.split() # Split into words
+new_text = text.replace("Python", "JavaScript") # Replace substring
+```
+
+5. **String Formatting**: You can format strings using various methods, including f-strings and the `str.format()` method:
+
+```python
+name = "Alice"
+age = 30
+formatted_string = f"My name is {name} and I am {age} years old."
+```
+
+6. **Escape Sequences**: Escape sequences are used to represent special characters within a string. For example, `\n` represents a newline, and `\"` represents a double quote within a string.
+
+```python
+message = "This is a new line.\nThis is a \"quoted\" word."
+```
+
+Strings are a fundamental data type in Python and are widely used in text processing, input/output, and many other aspects of programming. Python provides a rich set of methods and features to work with strings, making it a powerful tool for text manipulation and data processing.
+Lambda Expressions
+ In Python, a lambda expression, also known as a lambda function, is a small, anonymous, one-liner function that can have any number of arguments but can only have one expression. Lambda functions are typically used when you need a simple function for a short period and don't want to define a full function using the `def` keyword. They are particularly useful in functional programming and are often used with functions like `map()`, `filter()`, and `reduce()`.
+
+The basic syntax of a lambda expression is as follows:
+
+```python
+lambda arguments: expression
+```
+
+- `lambda`: This keyword is used to define a lambda function.
+- `arguments`: These are the input parameters or arguments that the lambda function can accept. You can have zero or more arguments separated by commas.
+- `expression`: This is a single Python expression that gets evaluated and returned as the result of the lambda function.
+
+Here are some examples of lambda expressions:
+
+1. A lambda function that adds two numbers:
+
+```python
+add = lambda x, y: x + y
+result = add(3, 5) # result will be 8
+```
+
+2. A lambda function that squares a number:
+
+```python
+square = lambda x: x ** 2
+result = square(4) # result will be 16
+```
+
+3. Using lambda with `sorted()` to sort a list of tuples by the second element:
+
+```python
+points = [(1, 5), (2, 3), (0, 8)]
+sorted_points = sorted(points, key=lambda x: x[1])
+# sorted_points will be [(2, 3), (1, 5), (0, 8)]
+```
+
+4. Using lambda with `filter()` to filter even numbers from a list:
+
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+# even_numbers will be [2, 4, 6, 8]
+```
+
+Lambda functions are concise and can be handy in cases where a short, simple function is needed, but they are not suitable for more complex operations that require multiple statements or additional logic. In such cases, it's better to define a regular named function using the `def` keyword.
+Conventions about the content and formatting of documentation strings
+ In Python, documentation strings, often referred to as "docstrings," are used to provide documentation for modules, classes, functions, and methods. They serve as a form of inline documentation, helping developers understand how to use the code and what it does. Conventions for the content and formatting of docstrings are outlined in Python's PEP 257, which is a style guide for docstring conventions. Here are some key conventions for writing docstrings in Python:
+
+1. **Triple Quotes**: Docstrings are enclosed in triple quotes (either triple single-quotes or triple double-quotes). The choice of single or double quotes should be consistent within your project.
+
+2. **Module-Level Docstrings**: At the top of each module, you should include a module-level docstring that provides an overview of the module's purpose and functionality.
+
+```python
+"""
+This is a module-level docstring.
+It provides an overview of what this module does.
+"""
+```
+
+3. **Function and Method Docstrings**: Functions and methods should have docstrings that describe their purpose, parameters, return values, and any exceptions they may raise. The docstring should be placed immediately after the function or method definition and should follow this format:
+
+```python
+def function_name(param1, param2):
+"""
+Brief description of the function.
+
+More detailed description of the function's purpose and behavior.
+
+:param param1: Description of the first parameter.
+:type param1: Data type of the first parameter (optional)
+:param param2: Description of the second parameter.
+:type param2: Data type of the second parameter (optional)
+:return: Description of the return value.
+:rtype: Data type of the return value (optional)
+:raises ExceptionType: Description of the exception (if applicable)
+"""
+# Function code here
+```
+
+4. **Class Docstrings**: Classes should have docstrings that describe the class's purpose and provide an overview of its attributes and methods. The docstring should be placed immediately after the class definition.
+
+```python
+class MyClass:
+"""
+Brief description of the class.
+
+More detailed description of the class's purpose and behavior.
+"""
+
+def __init__(self, param1):
+"""
+Constructor for MyClass.
+
+:param param1: Description of the parameter.
+:type param1: Data type of the parameter (optional)
+"""
+# Constructor code here
+```
+
+5. **One-Line Docstrings**: For simple functions or methods, a one-line docstring can be used. It should start and end with triple quotes and provide a concise description of the function's purpose.
+
+```python
+def add(a, b):
+"""Return the sum of two numbers."""
+return a + b
+```
+
+6. **Consistency**: Follow a consistent and readable style for your docstrings. Be clear, concise, and informative. Use proper punctuation and grammar.
+
+7. **ReStructuredText**: While not required, it's common to format docstrings using ReStructuredText (reST) syntax. This allows for easy conversion to other documentation formats, such as HTML or PDF.
+
+The conventions outlined here are important for writing readable and maintainable code. Good documentation helps other developers understand and use your code, and it also helps tools like Sphinx generate documentation for your project. Following PEP 257 and other relevant style guides is recommended to ensure consistency and clarity in your docstrings.
+
+
+
+DAY 4
+Input and Output
+ In Python, you can interact with a program using input and display information to the user using output.
+
+1. **Input (Reading User Input):**
+
+You can use the `input()` function to read input from the user through the keyboard. The `input()` function reads a line of text as a string from the user and returns that string. Here's a basic example:
+
+```python
+user_input = input("Enter something: ")
+print("You entered:", user_input)
+```
+
+When you run this code, it will prompt the user to enter something, and then it will display what the user entered.
+
+2. **Output (Displaying Information):**
+
+You can use the `print()` function to display information to the user. The `print()` function takes one or more expressions as arguments and displays them as text. Here's a simple example:
+
+```python
+print("Hello, World!")
+```
+
+This code will display "Hello, World!" in the console.
+
+You can also format the output using f-strings or the `.format()` method:
+
+```python
+name = "Alice"
+age = 30
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output:
+```
+My name is Alice and I am 30 years old.
+```
+
+3. **Output to Files:**
+
+You can also write output to a file instead of the console. To do this, you can use the `open()` function to open a file and the `write()` method to write data to it. Here's an example:
+
+```python
+with open("output.txt", "w") as file:
+file.write("This is written to a file.")
+```
+
+This code will create a file named "output.txt" and write the specified text to it.
+
+4. **Formatted Output:**
+
+You can format output using different formatting options, such as f-strings, %-formatting, or the `.format()` method. For example, with f-strings:
+
+```python
+name = "John"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output:
+```
+My name is John and I am 25 years old.
+
+Regular expressions are a compact way of representing a collection of strings. The power of regular expression is shown in that a single regular expression can represent an unlimited number of strings, but only if the expression’s requirements are met. Regular expressions (also known as ‘regexes’) are defined by using a language other than Python (a mini-language). The way Python communicates and creates expressions is done with the re module.
+
+
+
+Regexes are used for five main reasons:
+
+
+
+· Parsing: Identifying and extracting pieces of text that match certain criteria.
+
+· Searching: Locating substrings that can have more than one form like: ‘pet.png’, ‘pet.gif’, ‘pet.mpg’ while avoiding ‘carpet.gif’.
+
+· Searching and replacing: Find substrings and replace specified words within the matched string or strings, e.g. replacing 071 234 5678 with +2771 234 5678.
+
+· Splitting strings: Splitting a string where a certain character occurs, for example, split comma delimits strings every time a ‘,’ is found.
+
+· Validation: Checking whether a string meets criteria, for example, to check whether an email address is in the standard format.
+
+
+
+Regexes are used to create parsers, but they do have limitations:
+
+
+
+· They are only able to deal with recursive (repeating) structured text if the maximum number of recursions is known.
+
+· Large complex regexes are difficult to maintain.
+
+
+
+This is why, when parsing, a tool designed for this purpose is used. For example, use an XML parser for XML. At its simplest an expression is just a character, which can be followed by a quantifier. More complex expressions can include any number of quantified expressions.
+
+
+```
+Reading and Writing Files
+ Argument
+
+The argument is the object used in an application of a function; it may be referenced by other variables or objects.
+
+
+
+· Parameter
+
+The parameter is a variable name that is part of the function and is a local variable within the function body.
+
+Ordinary functions are functions that follow mathematical procedures. They will receive an argument, perform a specific calculation with the argument, and return a result.
+
+Procedure functions normally do not return a result; they are called to execute a procedure. For example a function can be created to set up a connection to a database.
+
+Factory functions do not take parameters. The function generates values. Some factory functions work by accessing an object encapsulated in a module. For example, you will access the random number generator encapsulated in the random module.
+
+Regular expressions, often referred to as regex or regexp, are powerful tools for pattern matching and text manipulation in Python. Python provides the `re` module for working with regular expressions. Here's a basic overview of how to use regular expressions in Python:
+
+1. Import the `re` module:
+
+To use regular expressions in Python, you need to import the `re` module:
+
+```python
+import re
+```
+
+2. Creating a Regular Expression Pattern:
+
+You define a regular expression pattern to match specific patterns in strings. For example, to match a simple word like "apple," you can create a pattern like this:
+
+```python
+pattern = r"apple"
+```
+
+The `r` before the string denotes a raw string, which is often used with regular expressions to avoid unintended escapes.
+
+3. Using Regular Expression Functions:
+
+Python's `re` module provides several functions for working with regular expressions. Here are some of the most commonly used ones:
+
+- `re.search()`: Searches for a pattern in a string and returns the first match found.
+- `re.match()`: Matches the pattern only at the beginning of the string.
+- `re.findall()`: Returns all non-overlapping matches as a list of strings.
+- `re.finditer()`: Returns an iterator yielding match objects for all non-overlapping matches.
+- `re.sub()`: Replaces occurrences of the pattern with a specified string.
+- `re.split()`: Splits the string by occurrences of the pattern.
+
+Here's an example of using `re.search()`:
+
+```python
+text = "I have an apple and a banana."
+pattern = r"apple"
+match = re.search(pattern, text)
+if match:
+print("Match found:", match.group())
+else:
+print("No match found.")
+```
+
+4. Regular Expression Flags:
+
+You can also use flags with regular expression functions to modify their behavior. For example, you can use `re.IGNORECASE` to perform a case-insensitive match. For instance:
+
+```python
+text = "I have an Apple and a banana."
+pattern = r"apple"
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+print("Match found:", match.group())
+else:
+print("No match found.")
+```
+
+5. Regular Expression Patterns:
+
+Regular expression patterns can be much more complex than simple string matches. You can use metacharacters and special sequences to create powerful and flexible patterns. Some common metacharacters include `.` (match any character), `*` (match zero or more of the preceding character), `+` (match one or more of the preceding character), `?` (match zero or one of the preceding character), and more.
+
+Here's a simple example of using regular expressions to extract email addresses from a text:
+
+```python
+import re
+
+text = "My email addresses are john@example.com and jane@email.co.uk. Please contact us."
+pattern = r'\S+@\S+'
+matches = re.findall(pattern, text)
+
+for match in matches:
+print(match)
+```
+
+This code will extract and print all the email addresses from the given text. Regular expressions can be as simple or as complex as your specific needs require.
+Write Methods
+ Python methods are typically defined within classes and operate on object instances.
+In Python, characters and character classes are essential concepts when working with strings and regular expressions. Characters represent individual symbols or letters, while character classes are used to specify groups of characters that match specific patterns in strings. Let's explore these concepts in more detail:
+
+1. Characters:
+Characters in Python are individual symbols or letters, such as 'a', 'b', '1', '$', and so on. You can work with characters in various ways, including indexing a string to access individual characters.
+
+Example:
+
+```python
+my_string = "Hello, World!"
+first_char = my_string[0] # Access the first character 'H'
+```
+
+2. Character Classes:
+Character classes are patterns that define groups of characters. They are often used in regular expressions to match specific character patterns in strings. Python's `re` module allows you to work with character classes to perform pattern matching and text manipulation.
+
+Common character classes include:
+
+- `\d`: Matches any digit (equivalent to `[0-9]`).
+- `\D`: Matches any non-digit character (equivalent to `[^0-9]`).
+- `\w`: Matches any word character (letters, digits, or underscores, equivalent to `[a-zA-Z0-9_]`).
+- `\W`: Matches any non-word character (equivalent to `[^a-zA-Z0-9_]`).
+- `\s`: Matches any whitespace character (spaces, tabs, newline, etc.).
+- `\S`: Matches any non-whitespace character.
+- `[...]`: A custom character class, you can define your own set of characters to match. For example, `[aeiou]` matches any vowel.
+
+Example of using character classes in Python's `re` module:
+
+```python
+import re
+
+text = "The price of the item is $99.99"
+pattern = r'\$\d+\.\d+' # Matches currency values like $99.99
+match = re.search(pattern, text)
+if match:
+print("Match found:", match.group()) # Output: Match found: $99.99
+```
+
+Character classes are very powerful when you need to extract or validate patterns in strings. You can use them to create complex regular expressions to match specific text patterns within larger strings or documents.
+Write Methods
+ No answer yet.
+lists and methods
+ In Python's `re` module, regular expressions can be modified using flags, which are optional arguments that change the behavior of the regular expression pattern matching. Flags are represented as constants and can be combined using the bitwise OR operator (`|`). These flags help you control various aspects of pattern matching, such as case-insensitivity, multiline matching, and more. Here are some common flags:
+
+1. `re.IGNORECASE` (or `re.I`):
+- This flag makes the regular expression pattern case-insensitive, allowing it to match both uppercase and lowercase characters.
+
+Example:
+```python
+import re
+
+text = "Hello, world!"
+pattern = r'hello'
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+print("Match found:", match.group()) # Output: Match found: Hello
+```
+
+2. `re.MULTILINE` (or `re.M`):
+- This flag enables multiline mode, which allows the `^` and `$` anchors to match the beginning and end of each line within a multiline string. By default, `^` and `$` match the start and end of the entire string.
+
+Example:
+```python
+import re
+
+text = "Line 1\nLine 2\nLine 3"
+pattern = r'^Line \d'
+matches = re.findall(pattern, text, re.MULTILINE)
+print(matches) # Output: ['Line 1', 'Line 2']
+```
+
+3. `re.DOTALL` (or `re.S`):
+- This flag makes the dot (`.`) in your regular expression match any character, including newline characters (`\n`). By default, the dot doesn't match newline characters.
+
+Example:
+```python
+import re
+
+text = "Line 1\nLine 2\nLine 3"
+pattern = r'.*2.*'
+match = re.search(pattern, text, re.DOTALL)
+if match:
+print("Match found:", match.group()) # Output: Match found: Line 2
+```
+
+4. `re.VERBOSE` (or `re.X`):
+- This flag allows you to write more readable and well-documented regular expressions by ignoring whitespace and adding comments within the pattern. It helps with complex regex patterns.
+
+Example:
+```python
+import re
+
+text = "Hello, world!"
+pattern = r'''
+hello, # Match "hello,"
+\s+ # Match one or more whitespace characters
+world # Match "world"
+'''
+match = re.search(pattern, text, re.VERBOSE)
+if match:
+print("Match found:", match.group()) # Output: Match found: Hello, world
+```
+
+5. `re.ASCII`:
+- This flag forces ASCII-only matching, treating non-ASCII characters as literals. It can be useful when you want to work with only ASCII characters.
+
+Flags are typically used as the third argument to `re` module functions like `re.search()`, `re.match()`, and `re.findall()`. You can combine multiple flags using the `|` operator to achieve the desired behavior in your regular expressions.
+Reading and Writing to Files
+ 1. **Opening a File**: To open a file for reading, use the `open()` function with the file name and the mode `'r'` (for reading).
+
+```python
+# Open a file for reading
+file_path = 'sample.txt'
+with open(file_path, 'r') as file:
+# File operations go here
+
+
+2. **Reading Data**: You can read the file's contents using methods like `read()`, `readline()`, or by iterating through the file object.
+
+- Using `read()` to read the entire file content:
+
+```python
+with open(file_path, 'r') as file:
+content = file.read()
+print(content)
+```
+
+- Using `readline()` to read lines one by one:
+
+```python
+with open(file_path, 'r') as file:
+line = file.readline()
+while line:
+print(line, end='')
+line = file.readline()
+```
+
+- Iterating through the file object:
+
+```python
+with open(file_path, 'r') as file:
+for line in file:
+print(line, end='')
+```
+
+### Writing to a File
+
+You can write data to a file using file objects in Python. Here's how you can do it:
+
+1. **Opening a File for Writing**: To open a file for writing, use the `open()` function with the file name and the mode `'w'` (for writing). Be cautious, as this will overwrite the file if it already exists.
+
+```python
+# Open a file for writing (creates the file if it doesn't exist)
+file_path = 'output.txt'
+with open(file_path, 'w') as file:
+# File operations go here
+```
+
+2. **Writing Data**: You can write data to the file using the `write()` method.
+
+```python
+with open(file_path, 'w') as file:
+file.write("Hello, World!\n")
+file.write("This is a sample file.\n")
+```
+
+3. **Appending Data**: To add content to an existing file without overwriting it, use the mode `'a'` for append.
+
+```python
+# Open a file for appending (creates the file if it doesn't exist)
+file_path = 'output.txt'
+with open(file_path, 'a') as file:
+file.write("This is appended content.\n")
+```
+
+### Closing the File
+
+In Python, it's good practice to use the `with` statement when working with file objects. This ensures that the file is properly closed when you're done with it. The file will be automatically closed when you exit the `with` block.
+
+Remember to handle exceptions when working with files, such as `FileNotFoundError` or `PermissionError`. Always make sure you have the necessary permissions to read from or write to the file.
+
+That's a basic introduction to working with file objects in Python. You can expand on these concepts to handle more complex file operations and work with different file formats.
+
+
